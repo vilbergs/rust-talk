@@ -5,7 +5,7 @@ pub fn fake_data() -> Vec<u32> {
 
   let mut vec = Vec::new();
 
-  for _ in 1..1001 {
+  for _ in 1..10001 {
     vec.push(rng.gen_range(20..1001))
   }
 

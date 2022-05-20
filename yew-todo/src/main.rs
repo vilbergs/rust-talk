@@ -70,7 +70,7 @@ fn state() -> Html {
 
     html! {
         <div class={classes!("wrapper")}>
-        <input class={classes!("input")} type="text" onkeyup={add_todo}/>
+            <input class={classes!("input")} type="text" onkeyup={add_todo}/>
             {todos.iter().map(|todo| html!{
                     <TodoItem
                         id={todo.id}

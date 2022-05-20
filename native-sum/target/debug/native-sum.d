@@ -1,1 +1,0 @@
-/Users/vilberg/sites/vilbergs/rust-talk/native-sum/target/debug/native-sum: /Users/vilberg/sites/vilbergs/rust-talk/native-sum/src/fakedata.rs /Users/vilberg/sites/vilbergs/rust-talk/native-sum/src/main.rs

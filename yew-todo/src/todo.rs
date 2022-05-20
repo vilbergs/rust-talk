@@ -1,5 +1,3 @@
-use web_sys::{HtmlInputElement, MouseEvent};
-use yew::events::{Event, FocusEvent, KeyboardEvent};
 use yew::prelude::*;
 
 #[derive(PartialEq, Properties, Clone)]

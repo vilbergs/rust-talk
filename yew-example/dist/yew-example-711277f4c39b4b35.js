@@ -274,7 +274,7 @@ async function load(module, imports) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('yew-example-3e9cae7a1b90466d_bg.wasm', import.meta.url);
+        input = new URL('yew-example-711277f4c39b4b35_bg.wasm', import.meta.url);
     }
     const imports = {};
     imports.wbg = {};
@@ -573,8 +573,8 @@ async function init(input) {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper1844 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 195, __wbg_adapter_24);
+    imports.wbg.__wbindgen_closure_wrapper1949 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 204, __wbg_adapter_24);
         return addHeapObject(ret);
     };
 

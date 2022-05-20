@@ -7,6 +7,7 @@ mod fakedata;
 #[function_component(UseState)]
 fn state() -> Html {
     let items = use_state(|| fakedata::fake_data());
+    let sum = use_state(|| 0);
     let time = use_state(|| 0.0);
 
     let window = web_sys::window().unwrap();
@@ -19,24 +20,25 @@ fn state() -> Html {
     };
 
     let onsort = {
-        perf.mark("start");
         let items = items.clone();
+        let sum = sum.clone();
         let time = time.clone();
 
-        let mut sortable = (*items).clone();
-        sortable.sort();
-        Callback::from(move |_| {
-            items.set(sortable.clone());
-            perf.mark("end");
+        perf.mark("start").unwrap();
+        let total = (*items).iter().sum();
+        perf.mark("end").unwrap();
 
-            perf.measure_with_start_mark_and_end_mark("sort-speed", "start", "end");
+        Callback::from(move |_| {
+            perf.measure_with_start_mark_and_end_mark("sort-speed", "start", "end")
+                .unwrap();
+            sum.set(total);
 
             let js_val = perf.get_entries_by_name("sort-speed").get(0);
-
             let entry = PerformanceEntry::from(js_val);
 
             time.set(entry.duration());
-            perf.clear_measures()
+
+            perf.clear_measures();
         })
     };
 
@@ -44,6 +46,7 @@ fn state() -> Html {
         <div>
         <button onclick={onnew}>{ "New" }</button>
             <button onclick={onsort}>{ "Sort" }</button>
+            <div>{*sum}</div>
             <div>{*time}</div>
             {items.iter().map(|n| html!{
                 <div class={classes!("item")} style={format!("width: {}px;", n)}>
